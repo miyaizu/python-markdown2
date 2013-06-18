@@ -2229,14 +2229,18 @@ def main(argv=None):
     if opts.extras:
         extras = {}
         for s in opts.extras:
-            splitter = re.compile("[,;: ]+")
+            splitter = re.compile("[; ]+")
             for e in splitter.split(s):
                 if '=' in e:
                     ename, earg = e.split('=', 1)
                     try:
-                        earg = int(earg)
+                        earg = eval(earg)
                     except ValueError:
                         pass
+                    #print ename
+                    #print earg
+                    #print type(earg)
+                    #print
                 else:
                     ename, earg = e, None
                 extras[ename] = earg
