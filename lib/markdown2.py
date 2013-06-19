@@ -350,7 +350,8 @@ class Markdown(object):
 
         text += "\n"
 
-        rv = UnicodeWithAttrs(text)
+        #rv = UnicodeWithAttrs(text)
+        rv = text
         if "toc" in self.extras:
             rv._toc = self._toc
         if "metadata" in self.extras:
