@@ -1503,7 +1503,7 @@ class Markdown(object):
                                                     **formatter_opts)
                 return "\n\n%s\n\n" % colored
 
-        codeblock = self._encode_code(codeblock)
+        #codeblock = self._encode_code(codeblock)
         pre_class_str = self._html_class_str_from_tag("pre")
         code_class_str = self._html_class_str_from_tag("code")
         return "\n\n<pre%s><code%s>\n%s\n</code></pre>\n\n" % (

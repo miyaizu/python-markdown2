@@ -10,7 +10,7 @@ import markdown2
 
 
 def main():
-    md = markdown2.markdown("# test\n\n```\nimport sys\n```\n\n* 1\n* 2\n* 3", extras={ "fenced-code-blocks": None })
+    md = markdown2.markdown("# test\n\n```\n#include <string>\n```\n\n* 1\n* 2\n* 3", extras={ "fenced-code-blocks": None })
     print md
 
 
