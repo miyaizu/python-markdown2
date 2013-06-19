@@ -362,7 +362,9 @@ class Markdown(object):
         desired. This is called before unescaping of special chars and
         unhashing of raw HTML spans.
         """
-        return text
+        import re
+        conv_text = re.sub("<[/]?code>", "", text)
+        return conv_text
 
     def preprocess(self, text):
         """A hook for subclasses to do some preprocessing of the Markdown, if
@@ -1503,7 +1505,7 @@ class Markdown(object):
         codeblock = self._encode_code(codeblock)
         pre_class_str = self._html_class_str_from_tag("pre")
         code_class_str = self._html_class_str_from_tag("code")
-        return "\n\n<pre%s><code%s>%s\n</code></pre>\n\n" % (
+        return "\n\n<pre%s><code%s>\n%s\n</code></pre>\n\n" % (
             pre_class_str, code_class_str, codeblock)
 
     def _html_class_str_from_tag(self, tag):
