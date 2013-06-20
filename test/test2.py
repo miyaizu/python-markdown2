@@ -17,6 +17,7 @@ def main():
                 "wiki-tables": True,
                 "hard-wrap": True,
                 "rid-code-tag": True,
+                #"cancel-code-sanitize": True,
                 "html-classes": {
                     "pre": "aho"
                     },
