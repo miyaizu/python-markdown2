@@ -44,7 +44,35 @@ $ echo '[link](http://example)' | markdown2 -x nofollow
 ```
 """
 
-    md = markdown2.markdown(text2,
+    text3 = """
+# aaaa
+
+aaaa
+
+## aaaaa
+
+```
+#include <aaa>
+
+aaaa
+```
+
+aaaa
+
+----
+
+aaaaaa
+aaaaaaaaaa
+aaa`aaaaaa`aaaaaaaa
+
+* a
+* a
+* a
+
+aaaaa*aaaa*aaaaa
+"""
+
+    md = markdown2.markdown(text3,
             extras={
                 "fenced-code-blocks": True,
                 "wiki-tables": True,
