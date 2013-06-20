@@ -1,5 +1,6 @@
 # python-markdown2 Changelog
 
+
 ## python-markdown2 2.2.2
 - stopped liberally tag convert to hash.
 
