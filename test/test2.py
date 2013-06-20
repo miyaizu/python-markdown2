@@ -10,7 +10,6 @@ import markdown2
 
 
 def main():
-<<<<<<< HEAD
     text = "# test\n\ntest test\ntest test `test` test test\n\n```\n#include <string>\n```\n\n* 1\n* 2\n* 3"
     md = markdown2.markdown(text,
             extras={

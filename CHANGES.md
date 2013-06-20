@@ -1,5 +1,9 @@
 # python-markdown2 Changelog
 
+## python-markdown2 2.2.1
+- stopped sanitization in code paragraph.
+
+
 ## python-markdown2 2.2.0
 - fork my repository.
 

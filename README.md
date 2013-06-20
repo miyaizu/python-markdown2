@@ -15,15 +15,10 @@ Markdown.pl. Markdown2 also comes with a number of extensions (called
 "Extra Syntax" section below. "markdown2" supports all Python versions
 from 2.4 to 3.3 (and pypy and jython, though I don't frequently test those).
 
-There is another [Python
-markdown.py](http://www.freewisdom.org/projects/python-markdown/). However, at
-least at the time this project was started, markdown2.py was faster (see the
-[Performance
-Notes](https://github.com/trentm/python-markdown2/wiki/Performance-Notes)) and,
-to my knowledge, more correct (see [Testing
-Notes](https://github.com/trentm/python-markdown2/wiki/Testing-Notes)).
-That was a while ago though, so you shouldn't discount Python-markdown from
-your consideration.
+There is another [Python markdown.py](http://www.freewisdom.org/projects/python-markdown/).
+However, at least at the time this project was started, markdown2.py was faster (see the [Performance Notes](https://github.com/trentm/python-markdown2/wiki/Performance-Notes)) and,
+to my knowledge, more correct (see [Testing Notes](https://github.com/trentm/python-markdown2/wiki/Testing-Notes)).
+That was a while ago though, so you shouldn't discount Python-markdown from your consideration.
 
 Follow <a href="https://twitter.com/intent/user?screen_name=trentmick" target="_blank">@trentmick</a>
 for updates to python-markdown2.
@@ -96,11 +91,9 @@ details.
 
 # Project
 
-The python-markdown2 project lives at
-<https://github.com/trentm/python-markdown2/>.  (Note: On Mar 6, 2011 this
-project was moved from [Google Code](http://code.google.com/p/python-markdown2)
-to here on Github.) See also, [markdown2 on the Python Package Index
-(PyPI)](http://pypi.python.org/pypi/markdown2).
+The python-markdown2 project lives at <https://github.com/trentm/python-markdown2/>.
+(Note: On Mar 6, 2011 this project was moved from [Google Code](http://code.google.com/p/python-markdown2) to here on Github.)
+See also, [markdown2 on the Python Package Index (PyPI)](http://pypi.python.org/pypi/markdown2).
 
 The change log: <https://github.com/trentm/python-markdown2/blob/master/CHANGES.md>
 
@@ -121,6 +114,4 @@ set of matching .text (input) and .html (expected output) files. These are:
     php-markdown-cases/         Tests from the 3rd-party MDTest package
     php-markdown-extra-cases/   Tests also from MDTest package
 
-See the [Testing Notes wiki
-page](https://github.com/trentm/python-markdown2/wiki/Testing-Notes) for full
-details.
+See the [Testing Notes wiki page](https://github.com/trentm/python-markdown2/wiki/Testing-Notes) for full details.

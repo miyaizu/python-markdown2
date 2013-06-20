@@ -85,7 +85,7 @@ see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):
 #   not yet sure if there implications with this. Compare 'pydoc sre'
 #   and 'perldoc perlre'.
 
-__version_info__ = (2, 2, 0)
+__version_info__ = (2, 2, 1)
 __version__ = '.'.join(map(str, __version_info__))
 __author__ = "Trent Mick"
 __modifier__ = "ore"
@@ -1618,16 +1618,16 @@ class Markdown(object):
         The point is that in code, these characters are literals,
         and lose their special Markdown meanings.
         """
-        replacements = [
-            # Encode all ampersands; HTML entities are not
-            # entities within a Markdown code span.
-            ('&', '&amp;'),
-            # Do the angle bracket song and dance:
-            ('<', '&lt;'),
-            ('>', '&gt;'),
-        ]
-        for before, after in replacements:
-            text = text.replace(before, after)
+        #replacements = [
+        #    # Encode all ampersands; HTML entities are not
+        #    # entities within a Markdown code span.
+        #    ('&', '&amp;'),
+        #    # Do the angle bracket song and dance:
+        #    ('<', '&lt;'),
+        #    ('>', '&gt;'),
+        #]
+        #for before, after in replacements:
+        #    text = text.replace(before, after)
         hashed = _hash_text(text)
         self._escape_table[text] = hashed
         return hashed
