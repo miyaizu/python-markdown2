@@ -85,7 +85,11 @@ see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):
 #   not yet sure if there implications with this. Compare 'pydoc sre'
 #   and 'perldoc perlre'.
 
+<<<<<<< HEAD
 __version_info__ = (2, 2, 0)
+=======
+__version_info__ = (2, 1, 2)
+>>>>>>> 3a624fcd8181f8de8a7d84fe8bd419daebac9881
 __version__ = '.'.join(map(str, __version_info__))
 __author__ = "Trent Mick"
 __modifier__ = "ore"
@@ -365,7 +369,11 @@ class Markdown(object):
         desired. This is called before unescaping of special chars and
         unhashing of raw HTML spans.
         """
-        return text
+        #return text
+        import re
+        conv_text = re.sub("(<pre.*?>)<code.*?>", "\g<1>", text)
+        conv_text = re.sub("</code>(</pre>)", "\g<1>", conv_text)
+        return conv_text
 
         #if "rid-code-tag" in self.extras:
         #    import re
