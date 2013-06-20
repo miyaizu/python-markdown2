@@ -37,7 +37,14 @@ test
 test
 """
 
-    md = markdown2.markdown(text,
+    text2 = """
+```
+$ echo '[link](http://example)' | markdown2 -x nofollow
+<p><a rel="nofollow" href="http://example">link</a></p>
+```
+"""
+
+    md = markdown2.markdown(text2,
             extras={
                 "fenced-code-blocks": True,
                 "wiki-tables": True,
@@ -45,7 +52,7 @@ test
                 "rid-code-tag": True,
                 #"cancel-code-sanitize": True,
                 "html-classes": {
-                    "pre": "aho"
+                    "pre": "test"
                     },
                 })
     print md

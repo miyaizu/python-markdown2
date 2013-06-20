@@ -643,7 +643,7 @@ class Markdown(object):
         text = self._strict_tag_block_re.sub(hash_html_block_sub, text)
 
         # Now match more liberally, simply from `\n<tag>` to `</tag>\n`
-        text = self._liberal_tag_block_re.sub(hash_html_block_sub, text)
+        #text = self._liberal_tag_block_re.sub(hash_html_block_sub, text)
 
         # Special case just for <hr />. It was easier to make a special
         # case than to make the other regex more complicated.
