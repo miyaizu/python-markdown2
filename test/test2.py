@@ -10,7 +10,33 @@ import markdown2
 
 
 def main():
-    text = "# test\n\ntest test\ntest test `test` test test\n\n```\n#include <string>\n```\n\n* 1\n* 2\n* 3"
+    text = """
+# test
+
+test test
+test test `test` test test
+
+```
+#include <string>
+```
+
+* 1
+* 2
+* 3
+
+test
+
+    #include <iostream>
+    #include <stdio>
+
+    int main() {
+        return 0;
+    }
+
+
+test
+"""
+
     md = markdown2.markdown(text,
             extras={
                 "fenced-code-blocks": True,

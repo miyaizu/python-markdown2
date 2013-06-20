@@ -111,7 +111,7 @@
   will be removed in v2.0 or so.
 
 - New `fenced-code-blocks` extra. It allows a code block to not have to be
-  indented by fencing it with '```' on a line before and after. Based on
+  indented by fencing it with \`\`\` on a line before and after. Based on
   [GFM](<http://github.github.com/github-flavored-markdown/).
 
         Some code:

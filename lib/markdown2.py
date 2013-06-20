@@ -179,8 +179,8 @@ def markdown(
         tab_width=DEFAULT_TAB_WIDTH,
         safe_mode=None,
         extras={
-            "fenced-code-blocks": True,
-            "hard-wrap": True,
+            "fenced-code-blocks": None,
+            "hard-wrap": None,
             },
         link_patterns=None,
         use_file_vars=False):
