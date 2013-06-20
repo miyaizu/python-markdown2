@@ -86,7 +86,7 @@ see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):
 #   not yet sure if there implications with this. Compare 'pydoc sre'
 #   and 'perldoc perlre'.
 
-__version_info__ = (2, 2, 2)
+__version_info__ = (2, 2, 1)
 __version__ = '.'.join(map(str, __version_info__))
 __author__ = "Trent Mick"
 __modifier__ = "ORE"
@@ -643,7 +643,7 @@ class Markdown(object):
         text = self._strict_tag_block_re.sub(hash_html_block_sub, text)
 
         # Now match more liberally, simply from `\n<tag>` to `</tag>\n`
-        #text = self._liberal_tag_block_re.sub(hash_html_block_sub, text)
+        text = self._liberal_tag_block_re.sub(hash_html_block_sub, text)
 
         # Special case just for <hr />. It was easier to make a special
         # case than to make the other regex more complicated.
