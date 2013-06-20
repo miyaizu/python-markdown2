@@ -1,5 +1,15 @@
 # python-markdown2 Changelog
 
+## python-markdown2 2.2.0
+- fork my repository.
+
+- implement "hard-wrap" option.
+
+- change default option.
+
+- rid `<code>` tag in `<pre>` paragraph.
+
+
 ## python-markdown2 2.1.1 (not yet released)
 
 (nothing yet)

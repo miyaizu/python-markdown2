@@ -75,6 +75,9 @@ see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):
 * xml: Passes one-liner processing instructions and namespaced XML tags.
 * wiki-tables: Google Code Wiki-style tables. See
   <http://code.google.com/p/support/wiki/WikiSyntax#Tables>.
+---
+* rid-code-tag: A code tag is removed from the paragraph of a pre tag.
+* hard-wrap: The new-line in a paragraph is changed into <br \>.
 """
 
 # Dev Notes:
@@ -82,9 +85,11 @@ see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):
 #   not yet sure if there implications with this. Compare 'pydoc sre'
 #   and 'perldoc perlre'.
 
-__version_info__ = (2, 1, 1)
+__version_info__ = (2, 2, 0)
 __version__ = '.'.join(map(str, __version_info__))
 __author__ = "Trent Mick"
+__modifier__ = "ore"
+
 
 import os
 import sys
@@ -167,9 +172,17 @@ def markdown_path(path, encoding="utf-8",
                     link_patterns=link_patterns,
                     use_file_vars=use_file_vars).convert(text)
 
-def markdown(text, html4tags=False, tab_width=DEFAULT_TAB_WIDTH,
-             safe_mode=None, extras=None, link_patterns=None,
-             use_file_vars=False):
+def markdown(
+        text,
+        html4tags=False,
+        tab_width=DEFAULT_TAB_WIDTH,
+        safe_mode=None,
+        extras={
+            "fenced-code-blocks": True,
+            "hard-wrap": True,
+            },
+        link_patterns=None,
+        use_file_vars=False):
     return Markdown(html4tags=html4tags, tab_width=tab_width,
                     safe_mode=safe_mode, extras=extras,
                     link_patterns=link_patterns,
@@ -339,7 +352,8 @@ class Markdown(object):
 
         text += "\n"
 
-        rv = UnicodeWithAttrs(text)
+        #rv = UnicodeWithAttrs(text)
+        rv = text
         if "toc" in self.extras:
             rv._toc = self._toc
         if "metadata" in self.extras:
@@ -352,6 +366,14 @@ class Markdown(object):
         unhashing of raw HTML spans.
         """
         return text
+
+        #if "rid-code-tag" in self.extras:
+        #    import re
+        #    conv_text = re.sub("(<pre.*?>)<code.*?>", "\g<1>", text)
+        #    conv_text = re.sub("</code>(</pre>)", "\g<1>", conv_text)
+        #    return conv_text
+        #else:
+        #    return text
 
     def preprocess(self, text):
         """A hook for subclasses to do some preprocessing of the Markdown, if
@@ -1489,10 +1511,10 @@ class Markdown(object):
                                                     **formatter_opts)
                 return "\n\n%s\n\n" % colored
 
-        codeblock = self._encode_code(codeblock)
+        #codeblock = self._encode_code(codeblock)
         pre_class_str = self._html_class_str_from_tag("pre")
         code_class_str = self._html_class_str_from_tag("code")
-        return "\n\n<pre%s><code%s>%s\n</code></pre>\n\n" % (
+        return "\n\n<pre%s><code%s>\n%s\n</code></pre>\n\n" % (
             pre_class_str, code_class_str, codeblock)
 
     def _html_class_str_from_tag(self, tag):
@@ -1729,6 +1751,10 @@ class Markdown(object):
 
                 # Wrap <p> tags.
                 graf = self._run_span_gamut(graf)
+
+                if "hard-wrap" in self.extras:
+                    graf = graf.strip("\n").replace("\n", "<br />\n")
+
                 grafs.append("<p>" + graf.lstrip(" \t") + "</p>")
 
                 if cuddled_list:
@@ -2229,14 +2255,18 @@ def main(argv=None):
     if opts.extras:
         extras = {}
         for s in opts.extras:
-            splitter = re.compile("[,;: ]+")
+            splitter = re.compile("[; ]+")
             for e in splitter.split(s):
                 if '=' in e:
                     ename, earg = e.split('=', 1)
                     try:
-                        earg = int(earg)
+                        earg = eval(earg)
                     except ValueError:
                         pass
+                    #print ename
+                    #print earg
+                    #print type(earg)
+                    #print
                 else:
                     ename, earg = e, None
                 extras[ename] = earg
