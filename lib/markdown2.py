@@ -366,18 +366,14 @@ class Markdown(object):
         unhashing of raw HTML spans.
         """
         #return text
-        import re
-        conv_text = re.sub("(<pre.*?>)<code.*?>", "\g<1>", text)
-        conv_text = re.sub("</code>(</pre>)", "\g<1>", conv_text)
-        return conv_text
 
-        #if "rid-code-tag" in self.extras:
-        #    import re
-        #    conv_text = re.sub("(<pre.*?>)<code.*?>", "\g<1>", text)
-        #    conv_text = re.sub("</code>(</pre>)", "\g<1>", conv_text)
-        #    return conv_text
-        #else:
-        #    return text
+        if "rid-code-tag" in self.extras:
+            import re
+            conv_text = re.sub("(<pre.*?>)<code.*?>", "\g<1>", text)
+            conv_text = re.sub("</code>(</pre>)", "\g<1>", conv_text)
+            return conv_text
+        else:
+            return text
 
     def preprocess(self, text):
         """A hook for subclasses to do some preprocessing of the Markdown, if
