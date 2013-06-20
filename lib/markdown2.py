@@ -78,6 +78,7 @@ see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):
 ---
 * rid-code-tag: A code tag is removed from the paragraph of a pre tag.
 * hard-wrap: The new-line in a paragraph is changed into <br \>.
+* cancel-code-sanitize: Stopped sanitization in code paragraph.
 """
 
 # Dev Notes:
@@ -1614,16 +1615,18 @@ class Markdown(object):
         The point is that in code, these characters are literals,
         and lose their special Markdown meanings.
         """
-        #replacements = [
-        #    # Encode all ampersands; HTML entities are not
-        #    # entities within a Markdown code span.
-        #    ('&', '&amp;'),
-        #    # Do the angle bracket song and dance:
-        #    ('<', '&lt;'),
-        #    ('>', '&gt;'),
-        #]
-        #for before, after in replacements:
-        #    text = text.replace(before, after)
+        if not "cancel-code-sanitize" in self.extras:
+            replacements = [
+                # Encode all ampersands; HTML entities are not
+                # entities within a Markdown code span.
+                ('&', '&amp;'),
+                # Do the angle bracket song and dance:
+                ('<', '&lt;'),
+                ('>', '&gt;'),
+            ]
+            for before, after in replacements:
+                text = text.replace(before, after)
+
         hashed = _hash_text(text)
         self._escape_table[text] = hashed
         return hashed
