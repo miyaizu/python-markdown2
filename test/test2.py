@@ -10,7 +10,15 @@ import markdown2
 
 
 def main():
-    md = markdown2.markdown("# test\n\n```\n#include <string>\n```\n\n* 1\n* 2\n* 3", extras={ "fenced-code-blocks": None })
+    text = "# test\n\ntest test `test` test test\n\n```\n#include <string>\n```\n\n* 1\n* 2\n* 3"
+    md = markdown2.markdown(text,
+            extras={
+                "fenced-code-blocks": True,
+                "wiki-tables": True,
+                "html-classes": {
+                    "pre": "aho"
+                    }
+                })
     print md
 
 

@@ -363,8 +363,10 @@ class Markdown(object):
         desired. This is called before unescaping of special chars and
         unhashing of raw HTML spans.
         """
+        #return text
         import re
-        conv_text = re.sub("<[/]?code>", "", text)
+        conv_text = re.sub("(<pre.*?>)<code.*?>", "\g<1>", text)
+        conv_text = re.sub("</code>(</pre>)", "\g<1>", conv_text)
         return conv_text
 
     def preprocess(self, text):
